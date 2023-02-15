@@ -8,15 +8,16 @@ import Example2 from './hooks/Example2';
 import Example3 from './hooks/Example3';
 import Example4 from './hooks/Example4';
 import GreetingStyled from './components/pure/greetingStyled';
+import Father from './components/container/father';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    {/*<header className="App-header">*/}
+      
+        {/*<img src={logo} className="App-logo" alt="logo" />*/}
         {/* <Greeting name={"Peter"}></Greeting> */}
-        {/* <GreetingF name="Peter"></GreetingF> */}
-        {/*<TaskListComponent></TaskListComponent> */}
+        {/* <GreetingF name="Peter"></GreetingF> */}    
         {/* <ContactList></ContactList>*/}
         {/*<Example1></Example1> useState*/}
         {/*<Example2></Example2> useState - useRef - useEffect */}
@@ -26,8 +27,13 @@ function App() {
             props.children content
           </h3>
         </Example4>*/}
-        <GreetingStyled name="Gustavo"></GreetingStyled>
-      </header>
+        {/*<GreetingStyled name="Gustavo"></GreetingStyled> */}
+        {/* <Father></Father> */}
+         {/* */}
+        <TaskListComponent></TaskListComponent>
+
+    {/*</header> */}
+      
     </div>
   );
 }

@@ -1,9 +1,24 @@
-h1{
-    color: chartreuse;
+.task-action {
+    cursor: pointer;
 }
 
-.task-name {
-    font-weight: bold;
-    color: dodgerblue;
-}
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: lightblue;
+    border: 1px solid lightgray;
+    gap: 30px;
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .label {
+            margin: 0;
+        }
+    }
 
+    button {
+        width: 100%;
+    }
+}

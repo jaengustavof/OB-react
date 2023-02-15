@@ -6,13 +6,16 @@ import TaskComponent from '../pure/task';
 
 //styles
 import '../../styles/task.scss'
+import TaskForm from '../pure/forms/taskForm';
 
 
 const TaskListComponent = () => {
 
-    const defaultTask = new Task('Example', 'Default Description', false, LEVELS.NORMAL);
+    const defaultTask1 = new Task('Example1', 'Default Description1', true, LEVELS.NORMAL);
+    const defaultTask3 = new Task('Example2', 'Default Description2', false, LEVELS.URGENT);
+    const defaultTask2 = new Task('Example3', 'Default Description3', true, LEVELS.BLOCKING);
 
-    const [tasks, setTasks] = useState([defaultTask]);
+    const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3]);
     const [loading, setLoading] = useState(true);
 
     // Lifecycle control
@@ -23,20 +26,69 @@ const TaskListComponent = () => {
         console.log('Task List component will Unmount');
       }
 
-    }, [tasks])
+    }, [tasks]);
+
+    const completeTask = (task) => {
+      
+      const index = tasks.indexOf(task);
+      const tempTask = [...tasks];
+      tempTask[index].completed = !tempTask[index].completed;
+      setTasks(tempTask);
+    }
     
 
-    const changeCompleted = (id) =>{
-        console.log('TODO: change task status')
+    const deleteTask = (task) =>{
+      console.log('TODO: change task status')
+      const index = tasks.indexOf(task);
+      const tempTask = [...tasks];
+      tempTask.splice(index,1);
+      setTasks(tempTask);
+    }
+
+    const addTask = (task) =>{
+ 
+      const index = tasks.indexOf(task);
+      const tempTask = [...tasks];
+      tempTask.push(task);
+      setTasks(tempTask);
     }
 
     return (
         <div>
-            <h1>
-                Your Tasks:
-            </h1>
-            {/*TODO: for or map for all the tasks */}
-            <TaskComponent task={defaultTask}></TaskComponent> {/*defaultTask line 10 */}
+            <div className='col-12'>
+              <div className='card'>
+
+                <div className='card-header p-3'>
+                  <h5>Your Tasks</h5>
+                </div>
+
+                <div className='card-body' data-mdb-perfect-scrollbar='true' style={ {position: 'relative', height:'400px'} }>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope='col'>Title</th>
+                        <th>Description</th>
+                        <th>Priority</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead> 
+
+                    <tbody>
+                      {tasks.map((task, index)=> {
+                          return (<TaskComponent 
+                          key={index} 
+                          task={task} 
+                          complete={completeTask}
+                          remove={deleteTask}
+                          ></TaskComponent> )
+                        })}
+                    </tbody>
+                  </table>
+                </div>
+                
+              </div>
+            </div>
+            <TaskForm add={ addTask } ></TaskForm>
         </div>
     );
 };
