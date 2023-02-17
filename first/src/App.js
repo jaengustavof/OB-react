@@ -9,6 +9,7 @@ import Example3 from './hooks/Example3';
 import Example4 from './hooks/Example4';
 import GreetingStyled from './components/pure/greetingStyled';
 import Father from './components/container/father';
+import OptionalRender from './components/pure/optionalRender';
 
 function App() {
   return (
@@ -29,8 +30,11 @@ function App() {
         </Example4>*/}
         {/*<GreetingStyled name="Gustavo"></GreetingStyled> */}
         {/* <Father></Father> */}
-         {/* */}
-        <TaskListComponent></TaskListComponent>
+        {/* Conditional render examples */}
+        <OptionalRender></OptionalRender>
+
+        {/*<TaskListComponent></TaskListComponent> */}
+        
 
     {/*</header> */}
       
