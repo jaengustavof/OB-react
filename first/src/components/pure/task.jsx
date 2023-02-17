@@ -58,8 +58,8 @@ const TaskComponent = ({ task, complete, remove }) => { //task = props
             </td>
             <td className='align-middle'>
                 <span>{TaskCompletedIcon()}</span>
-                
-                <i onClick={() => remove(task)} className='bi-trash task-action' style={{color:'tomato'}}></i>
+                <i onClick={()=> remove(task)} className='bi-trash task-action' style={{color:'tomato'}}></i>
+                    
             </td>
         </tr>
 

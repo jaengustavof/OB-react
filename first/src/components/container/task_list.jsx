@@ -29,7 +29,6 @@ const TaskListComponent = () => {
     }, [tasks]);
 
     const completeTask = (task) => {
-      
       const index = tasks.indexOf(task);
       const tempTask = [...tasks];
       tempTask[index].completed = !tempTask[index].completed;
@@ -38,7 +37,6 @@ const TaskListComponent = () => {
     
 
     const deleteTask = (task) =>{
-      console.log('TODO: change task status')
       const index = tasks.indexOf(task);
       const tempTask = [...tasks];
       tempTask.splice(index,1);
@@ -46,8 +44,6 @@ const TaskListComponent = () => {
     }
 
     const addTask = (task) =>{
- 
-      const index = tasks.indexOf(task);
       const tempTask = [...tasks];
       tempTask.push(task);
       setTasks(tempTask);
