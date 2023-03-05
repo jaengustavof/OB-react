@@ -10,6 +10,8 @@ import Example4 from './hooks/Example4';
 import GreetingStyled from './components/pure/greetingStyled';
 import Father from './components/container/father';
 import OptionalRender from './components/pure/optionalRender';
+import LoginFormik from './components/pure/forms/loginFormik';
+import RegisterFormik from './components/pure/forms/registerFormik';
 
 function App() {
   return (
@@ -31,11 +33,16 @@ function App() {
         {/*<GreetingStyled name="Gustavo"></GreetingStyled> */}
         {/* <Father></Father> */}
         {/* Conditional render examples */}
-        <OptionalRender></OptionalRender>
+        {/*<OptionalRender></OptionalRender> */}
 
-        {/*<TaskListComponent></TaskListComponent> */}
+        {/*Formik and Yup Examples*/}
+        {/*<LoginFormik></LoginFormik> */}
+        {/* <RegisterFormik></RegisterFormik> */}
+       
+        <TaskListComponent></TaskListComponent>
+        {/* */}
         
-
+  
     {/*</header> */}
       
     </div>
