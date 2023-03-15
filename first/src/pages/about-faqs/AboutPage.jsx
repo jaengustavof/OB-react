@@ -5,7 +5,6 @@ const AboutPage = () => {
 
     const location = useLocation();
     const history = useNavigate();
-    console.log('We are in route: ', location.pathname);
 
     const navigate = (path) => {
         history(path)
