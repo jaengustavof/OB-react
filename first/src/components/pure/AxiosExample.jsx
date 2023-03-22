@@ -19,7 +19,7 @@ const AxiosExample = () => {
         .then((response)=>{
             if(response.status === 200){
                 setUser(response.data.results[0])
-                console.log(response.data.results[0])
+                // console.log(response.data.results[0])
             }
         })
         .catch((error) => alert(error))
