@@ -3,6 +3,7 @@ import './App.css';
 import Greeting from './components/pure/greeting';
 import GreetingF from './components/pure/greetingF';
 import TaskListComponent from './components/container/task_list';
+import TaskListContext from './components/container/task_list_context'
 import Example1 from './hooks/Example1';
 import Example2 from './hooks/Example2';
 import Example3 from './hooks/Example3';
@@ -55,9 +56,13 @@ function App() {
 
         {/*Axios*/}
         {/*<AxiosExample></AxiosExample> */}
-        <AxiosCrudExample></AxiosCrudExample>
+        
 
-        {/*<TaskListComponent></TaskListComponent> */}
+        {/*<AxiosCrudExample></AxiosCrudExample>*/}
+        {/* <TaskListComponent></TaskListComponent> */}
+         
+
+        <TaskListContext></TaskListContext>
         
   
     {/*</header> */}

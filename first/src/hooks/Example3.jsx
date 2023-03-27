@@ -8,7 +8,6 @@ import React, { useState, useContext } from 'react';
 const myContext = React.createContext(null);
 
 /**
- * 
  * @returns componentOne has a value that receives from the parent
  */
 const ComponentOne = () => {
