@@ -2,21 +2,29 @@ import React, {useEffect, useState, useContext} from 'react';
 
 import Context from '../../context';
 import { LEVELS } from '../../models/levels.enum';
+import TasksFilters from '../../reducer/filterReducer';
 
 const TaskTableContext = () => {
 
-    let {tasks, setTasks} = useContext(Context); 
+    let {tasks, setTasks, filter, setFilter, filteredResults, setfilteredResults} = useContext(Context); 
     const [loading, setLoading] = useState(true);
 
         // Lifecycle control
         useEffect(() => {
-            console.log('Task state has been modified');
+
+            if(filter === 'all'){
+              console.log(tasks)
+              setfilteredResults(tasks)
+            }else {
+              setfilteredResults(tasks.filter((task)=> task.level === filter));
+            }
+
             setTimeout(() => {
               setLoading(false);
             }, 2000);
               
       
-        }, [tasks]);
+        }, [tasks, filter]);
           
         const complete = (task) => {
             const index = tasks.indexOf(task);
@@ -34,7 +42,6 @@ const TaskTableContext = () => {
         }
         
       
-          
         const TaskCompletedIcon = (task) =>{
             return task.completed ? 
             <i onClick={() => complete(task)} className='bi-toggle-on task-action' style={{color:'green'}}></i> : 
@@ -70,26 +77,29 @@ const TaskTableContext = () => {
                 </thead> 
       
                 <tbody>
-                  {tasks.map((task, index)=> {
-                      return (<tr className='fw-normal' >
-                  <th>
-                      <span className='ms-2'>{task.name}</span>
-                  </th>
-                  <td className='align-middle'>
-                      <span>{task.description}</span>
-                  </td>
-                    
-                  <td className='align-middle' >
-                  {/*Executes function to return badge*/}
-                    {taskLevelBadge(task)}
-                  </td>
-                  
-                  <td className='align-middle'>
-                    <span>{TaskCompletedIcon(task)}</span>
-                      <i onClick={()=> remove(task)}  className='bi-trash task-action' style={{color:'tomato'}}></i>
-                          
-                  </td>
-              </tr>)
+
+                
+                  {
+                    filteredResults.map((task, index)=> {
+                      return (<tr className='fw-normal' key={index} >
+                                  <th>
+                                      <span className='ms-2'>{task.name}</span>
+                                  </th>
+                                  <td className='align-middle'>
+                                      <span className={task.completed? 'task-completed':'task-pending'}>{task.description}</span>
+                                  </td>
+                                    
+                                  <td className='align-middle' >
+                                  {/*Executes function to return badge*/}
+                                    {taskLevelBadge(task)}
+                                  </td>
+                                  
+                                  <td className='align-middle'>
+                                    <span>{TaskCompletedIcon(task)}</span>
+                                      <i onClick={()=> remove(task)}  className='bi-trash task-action' style={{color:'tomato'}}></i>
+                                          
+                                  </td>
+                              </tr>)
                     })}
                 </tbody>
               </table>
@@ -123,6 +133,7 @@ const TaskTableContext = () => {
                 <div className='card-header p-3'>
                   <h5>Your Tasks</h5>
                 </div>
+                <TasksFilters></TasksFilters>
 
                 <div className='card-body' data-mdb-perfect-scrollbar='true' style={ {position: 'relative', height:'400px'} }>
                 {/*//TODO: add loading spinner*/}

@@ -13,10 +13,15 @@ const TaskListContext = () => {
     const defaultTask2 = new Task('Example3', 'Default Description3', true, LEVELS.BLOCKING);
 
     const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3]);
-
+    const [filter, setFilter] = useState('all');
+    const [filteredResults, setfilteredResults] = useState([]);
     
     return (
-        <Context.Provider value={{tasks, setTasks}}>
+        <Context.Provider value={{
+            tasks, setTasks, 
+            filter, setFilter,
+            filteredResults, setfilteredResults
+            }}>
             <div>
                 <TaskTableContext></TaskTableContext>
                 <TaskReactForm></TaskReactForm>
