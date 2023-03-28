@@ -22,11 +22,11 @@ const TaskReactForm = () => {
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/* register your input into the hook by invoking the "register" function */}
-                <input {...register("taskname", { required: true })}/>
+                <input {...register("taskname", { required: true })} placeholder="Enter new task name"/>
                 {errors.taskname && <span>This field is required</span>}
                 
                 {/* include validation with required or other standard HTML validation rules */}
-                <input {...register("taskdescription", { required: true })} />
+                <input {...register("taskdescription", { required: true })} placeholder="Enter new task description"/>
                 {/* errors will return when field validation fails  */}
                 {errors.taskdescription && <span>This field is required</span>}
 
@@ -38,7 +38,7 @@ const TaskReactForm = () => {
                 </select>
                 {errors.priority && <span>This field is required</span>}
                                 
-                <button type="submit"  className='btn btn-primary btn-lg ms-2'>Add</button>
+                <button type="submit"  className='btn btn-primary btn-lg '>Add New Task</button>
             </form>
         </div>
     );
